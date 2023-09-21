@@ -1,0 +1,3 @@
+dont use jar files mentioned in the lecture because all are deprecated 
+since the version moved to jakarta 
+use these jar files in the place of jsp,jstl,servlet etc.
