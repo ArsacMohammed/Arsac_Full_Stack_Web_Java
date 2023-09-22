@@ -19,9 +19,18 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <error-page>
-	  <error-code>404</error-code>
-	  <location>/error.jsp</location>
+    <error-code>404</error-code>
+    <location>/error.jsp</location>
   </error-page>
+  <servlet>
+    <description></description>
+    <display-name>HomeController</display-name>
+    <servlet-name>HomeController</servlet-name>
+    <servlet-class>org.webIntegration.HomeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HomeController</servlet-name>
+    <url-pattern>/HomeController</url-pattern>
+  </servlet-mapping>
 </web-app>
