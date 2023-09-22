@@ -24,6 +24,7 @@ public class HomeController extends HttpServlet {
 		page = page.toLowerCase();
 		switch(page) {
 		case "home" :
+			request.setAttribute("title", "Home");
 			request.getRequestDispatcher("index.jsp").forward(request,response);
 			break;
 		case "listusers":
@@ -31,6 +32,7 @@ public class HomeController extends HttpServlet {
 			List<Users> listUsers =new ArrayList<>();
 			listUsers = new UserModel().listusers(dataSource);
 			request.setAttribute("listusers", listUsers);
+			request.setAttribute("title", "List Of Users");
 			// this "listusers" refers to the listusers in the get attribute in the listusers.jsp
 			request.getRequestDispatcher("listusers.jsp").forward(request,response);
 			break;

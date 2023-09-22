@@ -3,7 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>${param.title}</title>   <!-- custon title is passed using jstl tag --> 
+    <title><%
+    if (request.getAttribute("title")==null){
+    	out.print("HomePage");
+    }else {
+    	out.print((request.getAttribute("title")));
+    }
+    	%>
+    </title>   <!-- custon title can be passed from homw controller--> 
+    
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
