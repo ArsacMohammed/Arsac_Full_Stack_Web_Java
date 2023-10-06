@@ -90,9 +90,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="${pageContext.request.contextPath }/home?page=home" class="nav-item nav-link active">Home</a>
-                <a href="${pageContext.request.contextPath }/home?page=listusers" class="nav-item nav-link">ListUsers</a>
-
+                <a href="${pageContext.request.contextPath }/site?page=home" class="nav-item nav-link active">Home</a>
+                <a href="${pageContext.request.contextPath }/operation?page=listusers" class="nav-item nav-link">ListUsers</a>
+				<a href="${pageContext.request.contextPath }/operation?page=addUsers" class="nav-item nav-link">AddUsers</a>
+				
             </div>
             <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a>
         </div>

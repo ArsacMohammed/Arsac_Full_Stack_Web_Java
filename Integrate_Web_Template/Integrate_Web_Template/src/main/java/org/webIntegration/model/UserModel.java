@@ -3,6 +3,7 @@ package org.webIntegration.model;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -51,5 +52,36 @@ public class UserModel {
 
 		return listusers;
 		}
+	public boolean addUser(DataSource dataSource,Users newUser) {
+		Connection connect = null;
+		PreparedStatement statement = null;
+		try {
+			connect = dataSource.getConnection ();
+			String username= newUser.getUsername();
+			String email= newUser.getEmail();
+			String query= "insert into users (username,email) values (?,?)";
+			statement= connect.prepareStatement(query);
+			statement.setString(1, username);
+			statement.setString(2, email);
+			return statement.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+			try {
+				connect.close();
+				statement.close();
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
+	}
 	
 }

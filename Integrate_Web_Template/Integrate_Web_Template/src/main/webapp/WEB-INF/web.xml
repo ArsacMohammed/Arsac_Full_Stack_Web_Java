@@ -33,4 +33,14 @@
     <servlet-name>HomeController</servlet-name>
     <url-pattern>/HomeController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>siteController</display-name>
+    <servlet-name>siteController</servlet-name>
+    <servlet-class>org.webIntegration.siteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>siteController</servlet-name>
+    <url-pattern>/site</url-pattern>
+  </servlet-mapping>
 </web-app>

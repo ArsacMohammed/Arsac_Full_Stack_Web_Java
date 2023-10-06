@@ -19,6 +19,12 @@ public class Users {
 		this.username = username;
 		this.email = email;
 	}
+	public Users( String username, String email) {
+		super();
+		
+		this.username = username;
+		this.email = email;
+	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
