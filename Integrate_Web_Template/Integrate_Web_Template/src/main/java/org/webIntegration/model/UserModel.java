@@ -83,5 +83,41 @@ public class UserModel {
 		
 		
 	}
+	public void updateUser(DataSource dataSource, Users updatedUser) {
+		Connection connect = null;
+		PreparedStatement statement = null;
+		try {
+			connect = dataSource.getConnection ();
+			String username= updatedUser.getUsername();
+			String email= updatedUser.getEmail();
+			int user_id=updatedUser.getUser_id();
+			String query= "update users set username=? ,email=? where user_id=?";
+			statement= connect.prepareStatement(query);
+			statement.setString(1, username);
+			statement.setString(2, email);
+			statement.setInt(3,user_id);
+			statement.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	public void deleteUser(DataSource dataSource, int user_id) {
+		Connection connect = null;
+		PreparedStatement statement = null;
+		try {
+			connect=dataSource.getConnection();
+			String query= "delete from users  where user_id=?";
+			statement= connect.prepareStatement(query);
+			statement.setInt(1,user_id);
+			statement.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 	
 }

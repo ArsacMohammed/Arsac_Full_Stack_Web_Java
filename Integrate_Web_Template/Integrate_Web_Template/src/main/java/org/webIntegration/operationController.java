@@ -30,12 +30,33 @@ public class operationController extends HttpServlet {
 			request.setAttribute("title", "Add User");
 			request.getRequestDispatcher("addUser.jsp").forward(request,response);
 			break;
+		case "deleteuser" :
+			deleteUser(Integer.parseInt(request.getParameter("user_id")));
+			listUsers(response,request);
+			break;
+		case "updateuser":
+			request.setAttribute("title", "update Users");
+			request.getRequestDispatcher("updateUser.jsp").forward(request,response);
+			break;
 		default:
 			request.getRequestDispatcher("error.jsp").forward(request,response);
 			break;
 		}
 	}
 	
+	private void deleteUser(int user_id) {
+		new UserModel().deleteUser(dataSource,user_id);
+		
+	}
+
+	private void updateUserOperation(HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
+		
+		Users updatedUser= new Users(Integer.parseInt(request.getParameter("user_id")),request.getParameter("username"),request.getParameter("email"));
+		new UserModel().updateUser(dataSource,updatedUser);
+		return ;
+		
+	}
+
 	private void listUsers(HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
 		List<Users> listUsers =new ArrayList<>();
 		listUsers = new UserModel().listusers(dataSource);
@@ -52,6 +73,11 @@ public class operationController extends HttpServlet {
 			case "adduseroperation":
 				Users newUser= new Users(request.getParameter("username"),request.getParameter("email"));
 				addUserOperation(newUser);
+				listUsers(response,request);
+				break;
+			case "updateuseroperation":
+				
+				updateUserOperation(response,request);
 				listUsers(response,request);
 				break;
 			default:
